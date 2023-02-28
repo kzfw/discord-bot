@@ -12,6 +12,9 @@ Intents = discord.Intents.all()
 client = commands.Bot(command_prefix = '$', intents = Intents)
 currentTime = str(datetime.datetime.now()).split(' ')[0]
 
+# Global Variables
+roleList = getData.getRoles()
+
 # Logging Setup
 log.basicConfig(
     filename='zfw-bot-%s.log' % currentTime,
