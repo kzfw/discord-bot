@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 import asyncio
 import logging as log
-import json
+import getData
 import datetime
 
 # Setup Variables
