@@ -3,20 +3,25 @@ import json
 import requests
 # from requests_oauth2client import OAuth2Client
 import os
-import dotenv
+from dotenv import load_dotenv
+import httplib
 
-# VATSIM_AUTH = os.getenv('VATSIM_AUTH_ENDPOINT') + '/oauth/token'
+load_dotenv()
+VATSIM_AUTH = os.getenv('VATSIM_AUTH_ENDPOINT')
 USER_DATA_URL = 'https://api.zfwartcc.net/user?id='
 
-# def getAuthToken():
-#     CLIENT_ID = os.getenv('VATSIM_AUTH_CLIENT_ID')
-#     CLIENT_SECRET = os.getenv('VATSIM_AUTH_CLIENT_SECRET')
-#     TOKEN_URL = os.getenv('VATSIM_AUTH_ENDPOINT') + '/oauth/token'
+def getAuthToken():
+    CLIENT_ID = os.getenv('VATSIM_AUTH_CLIENT_ID')
+    CLIENT_SECRET = os.getenv('VATSIM_AUTH_CLIENT_SECRET')
+    TOKEN_URL = VATSIM_AUTH + '/oauth/token'
 
-# oauth2client = OAuth2Client(
-#     tokenEndpoint = VATSIM_AUTH,
-#     auth = (VATSIM_CLIENT_ID, VATSIM_CLIENT_SECRET)
-# )
+    conn = httplib.HTTPSConnection(VATSIM_AUTH)
+
+    url = "/oauth/token"
+
+    params = {
+        "grant type": "client_credentials"
+    }
 
 # Fetch user data from server
 def getUserData(cid):
